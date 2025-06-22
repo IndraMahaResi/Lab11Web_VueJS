@@ -1,97 +1,117 @@
-📘 Dokumentasi PRAKTIKUM 11 : VueJS
-🙋‍♂️ Identitas
-Nama: Indra Maha Resi
+# 📘 Dokumentasi PRAKTIKUM 11 : VueJS
 
-NIM: [312310044]
+## 🙋‍♂️ Identitas  
+- **Nama**: Indra Maha Resi  
+- **NIM**: 312310044  
+- **Kelas**: TI.23.C1  
+- **Nama Project**: PRAKTIKUM WEB2  
 
-Kelas: [TI.23.C1]
+---
 
-Nama Project: PRAKTIKUM WEB2
+## 📁 Deskripsi Singkat
 
-📁 Deskripsi Singkat
-Proyek ini dibuat untuk memenuhi tugas Praktikum Web2, khususnya berfokus pada pengembangan antarmuka frontend interaktif menggunakan VueJS 3 yang terintegrasi dengan API RESTful CodeIgniter 4 yang sudah ada (dari Praktikum 10). Ini mendemonstrasikan bagaimana aplikasi frontend terpisah dapat mengonsumsi data dan melakukan operasi CRUD melalui API.
+Proyek ini dibuat untuk memenuhi tugas Praktikum Web2, khususnya berfokus pada pengembangan antarmuka frontend interaktif menggunakan **VueJS 3** yang terintegrasi dengan **API RESTful CodeIgniter 4** yang sudah ada (dari Praktikum 10).  
+Ini mendemonstrasikan bagaimana aplikasi frontend terpisah dapat mengonsumsi data dan melakukan operasi **CRUD** melalui API.
 
-📸 Dokumentasi Langkah-langkah
-Semua screenshot disimpan dalam folder Dokumentasi/ di dalam proyek.
+---
 
-🧱 Praktikum 11: Frontend dengan VueJS 3
-Praktikum ini mengimplementasikan antarmuka pengguna interaktif untuk manajemen artikel menggunakan VueJS 3, berinteraksi dengan API RESTful CodeIgniter 4.
+## 📸 Dokumentasi Langkah-langkah
 
-Langkah 1: Persiapan dan Struktur Proyek VueJS
-Buat folder baru bernama lab8_vuejs di dalam docroot web server Anda (misalnya htdocs).
+> Semua screenshot disimpan dalam folder `Dokumentasi/` di dalam proyek.
 
-Di dalam folder tersebut, buat struktur direktori berikut:
+---
+
+## 🧱 Praktikum 11: Frontend dengan VueJS 3
+
+Praktikum ini mengimplementasikan antarmuka pengguna interaktif untuk manajemen artikel menggunakan **VueJS 3**, berinteraksi dengan **API RESTful CodeIgniter 4**.
+
+### ✅ Langkah 1: Persiapan dan Struktur Proyek VueJS
+
+Buat folder baru bernama `lab8_vuejs` di dalam docroot web server Anda (misalnya `htdocs`).
+
+Struktur direktori:
 
 lab8_vuejs/
 ├── index.html
 ├── assets/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── app.js
+│ ├── css/
+│ │ └── style.css
+│ └── js/
+│ └── app.js
 
-Pastikan Anda memiliki akses internet untuk memuat CDN VueJS dan Axios.
 
-Langkah 2: Konfigurasi index.html
-Buat file index.html di lab8_vuejs/.
+> Pastikan Anda memiliki akses internet untuk memuat CDN VueJS dan Axios.
 
-Sertakan CDN untuk VueJS 3 dan Axios di bagian <head>.
+---
 
-Link ke assets/css/style.css dan assets/js/app.js.
+### ✅ Langkah 2: Konfigurasi `index.html`
 
-Siapkan elemen <div id="app"> sebagai root aplikasi VueJS Anda.
+- Buat file `index.html` di dalam `lab8_vuejs/`.
+- Sertakan CDN untuk **VueJS 3** dan **Axios** di bagian `<head>`.
+- Link ke `assets/css/style.css` dan `assets/js/app.js`.
+- Siapkan elemen `<div id="app">` sebagai root aplikasi Vue.
+- Tambahkan HTML untuk:
+  - Tabel artikel
+  - Tombol **Tambah Data**
+  - Struktur modal form untuk tambah/ubah data
 
-Tambahkan elemen HTML untuk tabel artikel, tombol "Tambah Data", dan struktur modal form untuk tambah/ubah data.
+---
 
-Langkah 3: Styling dengan style.css
-Buat file style.css di lab8_vuejs/assets/css/.
+### ✅ Langkah 3: Styling dengan `style.css`
 
-Tambahkan kode CSS untuk mengatur tampilan tabel, form modal, tombol, dan elemen lainnya agar lebih menarik dan responsif.
+- Buat file `style.css` di `assets/css/`.
+- Tambahkan kode CSS untuk mengatur:
+  - Tampilan tabel
+  - Form modal
+  - Tombol
+  - Responsivitas elemen lain
 
-Langkah 4: Logika Aplikasi dengan app.js (VueJS)
-Buat file app.js di lab8_vuejs/assets/js/.
+---
 
-Tentukan apiUrl yang menunjuk ke API RESTful CodeIgniter Anda (dari Praktikum 10). Pastikan URL ini benar dan API Anda sudah berjalan!
+### ✅ Langkah 4: Logika Aplikasi dengan `app.js` (VueJS)
 
-Definisikan data() reactive untuk artikel, formData, showForm, formTitle, dan statusOptions.
+- Buat file `app.js` di `assets/js/`.
+- Tentukan `apiUrl` yang menunjuk ke API CodeIgniter 4 kamu (dari Praktikum 10).
+- Definisikan `data()` reactive:
+  - artikel, formData, showForm, formTitle, statusOptions
+- Implementasikan:
+  - `mounted()` untuk memuat data pertama kali
+  - `loadData()` – ambil data dari API via Axios
+  - `statusText()` – ubah nilai status jadi teks
+  - `tambah()` – buka modal untuk tambah data
+  - `edit(data)` – isi form dengan data yang akan diubah
+  - `hapus(index, id)` – request DELETE ke API dan update data
+  - `saveData()` – request POST (tambah) atau PUT (ubah) ke API
 
-Implementasikan mounted() untuk memuat data artikel pertama kali saat aplikasi dimuat.
+---
 
-Buat methods untuk:
+### ✅ Langkah 5: Menguji Aplikasi Frontend VueJS
 
-loadData(): Mengambil data artikel dari API menggunakan Axios.
+- Pastikan server CodeIgniter (lab7_php_ci) berjalan.
+- Endpoint: `http://localhost:8080/post`
+- Akses frontend VueJS:  
+  `http://localhost/lab8_vuejs/index.html`
 
-statusText(): Mengubah nilai status (misal 0/1) menjadi teks (Draft/Publish).
+#### 💡 Uji Coba
 
-tambah(): Menampilkan modal form untuk menambahkan data baru.
+- **Tambah Data**
+  - Klik tombol "Tambah Data"
+  - Isi form dan klik "Simpan"
+  - Data baru muncul di tabel
+- **Ubah Data**
+  - Klik "Edit" di salah satu baris
+  - Modal muncul, ubah data lalu simpan
+- **Hapus Data**
+  - Klik "Hapus", data langsung dihapus dari API
 
-edit(data): Mengisi modal form dengan data artikel yang akan diubah.
+---
 
-hapus(index, id): Mengirim request DELETE ke API dan memperbarui tampilan.
+## 📷 Screenshot
 
-saveData(): Mengirim request POST (untuk tambah) atau PUT (untuk ubah) ke API dan memperbarui data.
+| Tampilan             | Gambar                                  |
+|----------------------|------------------------------------------|
+| Tabel Data           | ![Tabel Data](Dokumentasi/tabel-data.png) |
+| Form Tambah Data     | ![Form Tambah](Dokumentasi/form-tambah.png) |
+| Form Ubah Data       | ![Form Edit](Dokumentasi/form-edit.png)   |
 
-Langkah 5: Menguji Aplikasi Frontend VueJS
-Pastikan server CodeIgniter Anda (dari lab7_php_ci) berjalan dan API http://localhost:8080/post dapat diakses.
-
-Buka browser Anda dan akses aplikasi VueJS: http://localhost/lab8_vuejs/index.html (sesuaikan URL dengan lokasi Anda).
-
-Mencoba Menambah Data:
-
-Klik tombol "Tambah Data".
-
-Isi form pada modal dan klik "Simpan".
-
-Data baru akan muncul di tabel.
-
-Mencoba Mengubah Data:
-
-Klik link "Edit" pada salah satu baris artikel.
-
-Modal akan muncul dengan data terisi. Ubah data dan klik "Simpan".
-
-Perubahan akan terlihat di tabel.
-
-![Tabel Data VueJS](Dokumentasi/tabel-data.png)
-![Form Tambah Data VueJS](Dokumentasi/form-tambah.png)
-![Form Ubah Data VueJS](Dokumentasi/form-edit.png)
+---
